@@ -1,4 +1,6 @@
-type Statistic = { icon: any; number: string; label: string };
+import { type LucideIcon } from "lucide-react";
+
+type Statistic = { icon?: LucideIcon | null; number: string; label: string };
 
 export const stats: Statistic[] = [
   { icon: null, number: "200+", label: "Members" },

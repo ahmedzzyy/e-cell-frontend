@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 
 // Components
 import Navbar from "@/components/Navbar";
@@ -19,7 +19,7 @@ function InitiativeCard({
   description,
   isExternal = false,
 }: {
-  image: any;
+  image: string | StaticImageData;
   title: string;
   description: string;
   isExternal?: boolean;
@@ -29,7 +29,7 @@ function InitiativeCard({
       {/* Image Container */}
       <div className="relative h-48 overflow-hidden">
         {isExternal ? (
-          <img
+          <Image
             src={image}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
@@ -125,9 +125,9 @@ export default function InitiativesPage() {
               Want to Get Involved?
             </h2>
             <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-              Join our initiatives and be part of MIT Manipal's thriving
-              entrepreneurship community. Whether you're looking to start your
-              own venture or support others, there's a place for you.
+              Join our initiatives and be part of MIT Manipal&apos;s thriving
+              entrepreneurship community. Whether you&apos;re looking to start
+              your own venture or support others, there&apos;s a place for you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 
 export type BlogPost = {
   id: string;
-  image: any; // Next.js StaticImageData
+  image: string | StaticImageData; // Next.js StaticImageData
   title: string;
   description: string;
   postURL: string;

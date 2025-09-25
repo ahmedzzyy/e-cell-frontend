@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 
 type CarouselImage = {
-  src: any; // Next.js StaticImageData
+  src: string | StaticImageData; // Next.js StaticImageData
   alt: string;
   title: string;
 };

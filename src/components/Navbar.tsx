@@ -3,10 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-
-// Import your logo
-import logoLight from "@/public/images/ece-removebg-preview.png";
 
 // Navigation items with proper typing
 const navItems = [
@@ -20,7 +16,6 @@ const navItems = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

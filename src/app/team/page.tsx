@@ -85,7 +85,7 @@ function DepartmentHeadCard({ head }: { head: HeadInfo }) {
           </svg>
 
           <blockquote className="text-slate-300 text-lg italic leading-relaxed">
-            "{head.motto}"
+            &quot;{head.motto}&quot;
           </blockquote>
         </div>
       </div>
@@ -244,8 +244,8 @@ export default function TeamPage() {
               Want to Join Our Leadership Team?
             </h2>
             <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-              Be part of MIT Manipal's premier entrepreneurship cell and lead
-              the future of innovation on campus.
+              Be part of MIT Manipal&apos;s premier entrepreneurship cell and
+              lead the future of innovation on campus.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

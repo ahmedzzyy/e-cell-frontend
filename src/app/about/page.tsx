@@ -95,7 +95,7 @@ export default function AboutPage() {
 
                     <p className="text-base leading-relaxed font-medium text-blue-300">
                       Join us on this journey to innovation and leadership.
-                      Together, let's build something extraordinary!
+                      Together, let&apos;s build something extraordinary!
                     </p>
                   </div>
                 </div>
@@ -216,8 +216,8 @@ export default function AboutPage() {
               Ready to Join Our Journey?
             </h2>
             <p className="text-xl max-w-2xl mx-auto mb-8 text-slate-300">
-              Be part of MIT Manipal's thriving entrepreneurship ecosystem and
-              turn your ideas into reality.
+              Be part of MIT Manipal&apos;s thriving entrepreneurship ecosystem
+              and turn your ideas into reality.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
