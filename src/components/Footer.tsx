@@ -155,7 +155,7 @@ const Footer = memo(() => {
       role="contentinfo"
     >
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-12">
           {/* Quick Links Section */}
           <section>
             <h4 className="font-bold text-lg mb-4">Quick Links</h4>
@@ -198,7 +198,7 @@ const Footer = memo(() => {
           </section>
 
           {/* Contact Us Section */}
-          <section className="hidden sm:block">
+          <section>
             <h4 className="font-bold text-lg mb-4">Contact Us</h4>
             <ul className="space-y-4">
               {contactInfo.map((contact) => (
