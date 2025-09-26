@@ -1,6 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+
 import "./globals.css";
 
 const robotoSans = Roboto({
