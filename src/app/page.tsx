@@ -71,7 +71,7 @@ export default function HomePage() {
                   href="/mes"
                   className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                 >
-                  <span className="relative z-10">Join MES 2025</span>
+                  <span className="relative z-10">MES 2026 : Coming Soon</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000" />
                 </Link>
 

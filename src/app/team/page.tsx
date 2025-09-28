@@ -13,15 +13,15 @@ import { type HeadInfo, teamData } from "@/data/teamData";
 // Department Head Card Component
 function DepartmentHeadCard({ head }: { head: HeadInfo }) {
   return (
-    <div className="group bg-slate-800/80 backdrop-blur-sm border border-slate-600/30 rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-3xl hover:border-blue-400/50 w-full">
+    <div className="group bg-slate-800/80 backdrop-blur-sm border border-slate-600/30 rounded-xl overflow-hidden shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-blue-400/50 w-full max-w-sm mx-auto">
       {/* Profile Image */}
-      <div className="relative h-80 overflow-hidden bg-slate-700">
+      <div className="relative h-64 overflow-hidden bg-slate-700">
         <Image
           src={head.image}
           alt={head.name}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"
-          sizes="400px"
+          sizes="300px"
         />
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
@@ -47,8 +47,10 @@ function DepartmentHeadCard({ head }: { head: HeadInfo }) {
           )}
           {head.instagram && (
             <a
-              href={`mailto:${head.instagram}`}
-              className="bg-slate-900/70 backdrop-blur-sm p-3 rounded-full hover:bg-green-600/80 transition-all duration-300 transform hover:scale-110"
+              href={head.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-900/70 backdrop-blur-sm p-3 rounded-full hover:bg-pink-600/80 transition-all duration-300 transform hover:scale-110"
               aria-label={`Email ${head.name}`}
             >
               <svg
@@ -77,7 +79,7 @@ function DepartmentHeadCard({ head }: { head: HeadInfo }) {
         <div className="relative">
           {/* Quote Icon */}
           <svg
-            className="w-8 h-8 text-blue-400/30 mx-auto mb-4"
+            className="w-6 h-6 text-blue-400/30 mx-auto mb-2"
             fill="currentColor"
             viewBox="0 0 24 24"
           >
@@ -195,7 +197,7 @@ export default function TeamPage() {
               {/* Department Head Card */}
               {currentHeads.length > 0 ? (
                 <div
-                  className={`grid gap-6 ${
+                  className={`grid gap-8 ${
                     headsCount === 1
                       ? "grid-cols-1 max-w-sm mx-auto"
                       : "grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto"
