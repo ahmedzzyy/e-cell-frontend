@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 // Components
 import Navbar from "@/components/Navbar";
@@ -130,6 +131,98 @@ function DepartmentMenu({
   );
 }
 
+// Year Filter Dropdown Component
+function YearFilterDropdown({
+  availableYears,
+  selectedYear,
+  onYearChange,
+}: {
+  availableYears: string[];
+  selectedYear: string;
+  onYearChange: (newYear: string) => void;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="relative inline-block w-full max-w-xs">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between bg-slate-800/80 backdrop-blur-sm border border-slate-600/30 text-white px-6 py-4 rounded-xl hover:border-blue-400/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+      >
+        <div className="flex items-center gap-3">
+          <svg
+            className="w-5 h-5 text-blue-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+            />
+          </svg>
+          <span className="font-medium">Academic Year: {selectedYear}</span>
+        </div>
+        <ChevronDown
+          className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+
+      {isOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 z-10"
+            onClick={() => setIsOpen(false)}
+          />
+
+          {/* Dropdown Menu */}
+          <div className="absolute z-20 w-full mt-2 bg-slate-800 border border-slate-600/30 rounded-xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="py-2">
+              {availableYears.map((year) => (
+                <button
+                  key={year}
+                  onClick={() => {
+                    onYearChange(year);
+                    setIsOpen(false);
+                  }}
+                  className={`w-full text-left px-6 py-3 transition-colors duration-200 ${
+                    selectedYear === year
+                      ? "bg-blue-600/80 text-white"
+                      : "text-slate-300 hover:bg-slate-700/50 hover:text-white"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">{year}</span>
+                    {selectedYear === year && (
+                      <svg
+                        className="w-5 h-5 text-blue-300"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 export default function TeamPage() {
   const availableYears = useMemo(() => getAvailableYears(), []);
 
@@ -176,11 +269,17 @@ export default function TeamPage() {
       {/* Main Content */}
       <main className="py-16 bg-slate-800">
         <div className="container mx-auto px-6">
-          {/* Filter Dropdowns */}
-
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Department Menu - Left Side */}
             <div className="lg:col-span-1">
+              {/* Filter Dropdowns */}
+              <div className="flex justify-center md:justify-start mb-8">
+                <YearFilterDropdown
+                  availableYears={availableYears}
+                  selectedYear={selectedYear}
+                  onYearChange={handleYearChange}
+                />
+              </div>
               <div className="sticky top-8">
                 <DepartmentMenu
                   departments={departments}
