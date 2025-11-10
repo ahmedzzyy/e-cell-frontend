@@ -43,7 +43,7 @@ export const teamData: YearlyTeamData = {
         linkedin: "https://www.linkedin.com/in/piyush-verma-030a9327a/",
       },
     ],
-    "Startup Guidance and Development": [
+    "Startup Development and Guidance": [
       {
         id: 8,
         name: "Vansh Sharma",

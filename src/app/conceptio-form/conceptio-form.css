@@ -1,0 +1,111 @@
+.form-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a1033 0%, #0d1a4f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.form-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+
+.form-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #d1d5db;
+  margin-bottom: 25px;
+}
+
+.highlight {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.form-content label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #e5e7eb;
+}
+
+.form-content input,
+.form-content select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.member-fields {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+}
+
+.footer-text {
+  margin-top: 25px;
+  font-size: 12px;
+  text-align: center;
+  color: #9ca3af;
+}
+
+/* Dropdown styling */
+.form-content select {
+  background-color: #1b2440;
+  color: white;
+  border: 1px solid #3b4a77;
+  font-weight: 600;
+}
+
+.form-content select option {
+  background-color: black;
+  color: white;
+  font-weight: 500;
+}

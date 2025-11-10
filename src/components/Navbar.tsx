@@ -12,6 +12,7 @@ const navItems = [
   { name: "Blogs", href: "/blog" },
   { name: "The Team", href: "/team" },
   { name: "MES", href: "/mes" },
+  { name: "CONCEPTIO ’26", href:"/conceptio-form"}
 ] as const;
 
 export default function Navbar() {
