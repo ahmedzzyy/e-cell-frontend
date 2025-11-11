@@ -119,3 +119,158 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Color Palette */
+:root {
+  --coral-cream: #FCEDD8;
+  --coral-yellow: #FFD464;
+  --coral-light: #FF5E5E;
+  --coral-pink:  #E23C64;
+  --coral-deep:  #B0183D;
+  --button-bg: linear-gradient(90deg, #FFB457, #FF6B6B);
+  --button-hover-bg: linear-gradient(90deg, #FFD464, #FF7E5F);
+  --button-shadow: 0 0 25px rgba(255, 180, 87, 0.35);
+}
+
+/* 🎨 Form Container */
+.form-container {
+  background: rgba(20, 20, 20, 0.65);
+  border: 1.5px solid rgba(255, 212, 100, 0.35);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(25px);
+  box-shadow: 0 0 60px rgba(255, 94, 94, 0.15);
+  padding: 2.5rem;
+  color: #fdfdfd;
+}
+
+/* ✍️ Labels */
+.form-label {
+  display: block;
+  font-weight: 600;
+  color: #FFD464;
+  margin-bottom: 0.35rem;
+}
+
+/* 📥 Inputs */
+.form-input {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.form-input:focus {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #FFD464;
+  box-shadow: 0 0 18px rgba(255, 212, 100, 0.35),
+              0 0 35px rgba(255, 94, 94, 0.25);
+}
+
+/* 🎓 Custom Select */
+select.form-input {
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-radius: 0.75rem;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+}
+
+select.form-input option {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+/* 📂 Upload Button */
+.custom-upload {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #8f001a;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0.6rem;
+  height: 2.2rem; /* 👈 sets height */
+  min-width: 7rem;
+  padding: 0.65rem 1.4rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.custom-upload:hover {
+  background-color: #B0183D;
+  box-shadow: 0 0 12px rgba(226, 60, 100, 0.3);
+  border: 1px solid rgba(255, 212, 100, 0.3);
+}
+
+.custom-upload img {
+  width: 1.2rem;
+  height: 1.2rem;
+  opacity: 0.9;
+}
+.trash-icon {
+  filter: brightness(0) saturate(100%) invert(88%) sepia(30%) saturate(500%) hue-rotate(-10deg) brightness(110%);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.trash-icon:hover {
+  filter: brightness(0) saturate(100%) invert(70%) sepia(100%) saturate(2000%) hue-rotate(-10deg) brightness(110%);
+  transform: scale(1.1);
+}
+
+/* 💫 Add Member Button */
+.add-btn {
+  color: #FFD464;
+  transform: scale(1);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.add-btn:hover {
+  color: #FF5E5E;
+  transform: scale(1.08);
+}
+
+/* ✨ Input Glow */
+.glow-focus:focus {
+  outline: none;
+  border-color: #FFD464;
+  box-shadow: 0 0 15px rgba(255, 212, 100, 0.4),
+              0 0 30px rgba(255, 94, 94, 0.3);
+  transition: box-shadow 0.25s ease, border 0.25s ease;
+}
+
+/* 🌈 Gradient Animations */
+@keyframes slowFloat {
+  0% { transform: translateY(0px) translateX(0px) scale(1); }
+  50% { transform: translateY(-40px) translateX(20px) scale(1.05); }
+  100% { transform: translateY(0px) translateX(0px) scale(1); }
+}
+
+@keyframes slowFloatReverse {
+  0% { transform: translateY(0px) translateX(0px) scale(1); }
+  50% { transform: translateY(40px) translateX(-20px) scale(1.05); }
+  100% { transform: translateY(0px) translateX(0px) scale(1); }
+}
+
+@keyframes slowPulse {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(1.05); }
+}
+
+.animate-slowFloat { animation: slowFloat 18s ease-in-out infinite; }
+.animate-slowFloatReverse { animation: slowFloatReverse 22s ease-in-out infinite; }
+.animate-slowPulse { animation: slowPulse 20s ease-in-out infinite; }
+
