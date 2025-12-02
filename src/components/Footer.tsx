@@ -55,17 +55,17 @@ const TwitterIcon = () => (
 // Contact data for better maintainability
 const contactInfo = [
   {
-    name: "Bhavesh Changulani",
+    name: "Bhavesh Changulani – Chairperson",
     phone: "+91 63860 98299",
     id: "contact-bhavesh",
   },
   {
-    name: "Ambica Mehra",
+    name: "Ambica Mehra – Public Relations and Outreach Head",
     phone: "+91 84220 74189",
     id: "contact-ambica",
   },
   {
-    name: "Preyanshi Doshi",
+    name: "Preyanshi Doshi – Public Relations and Outreach Head",
     phone: "+91 78610 96669",
     id: "contact-preyanshi",
   },
