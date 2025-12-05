@@ -53,21 +53,32 @@ const TwitterIcon = () => (
 );
 
 // Contact data for better maintainability
+// Contact data grouped by role for better readability
 const contactInfo = [
   {
-    name: "Bhavesh Changulani",
-    phone: "+91 63860 98299",
-    id: "contact-bhavesh",
+    role: "Chairperson",
+    contacts: [
+      {
+        name: "Bhavesh Changulani",
+        phone: "+91 63860 98299",
+        id: "contact-bhavesh",
+      },
+    ],
   },
   {
-    name: "Ambica Mehra",
-    phone: "+91 84220 74189",
-    id: "contact-ambica",
-  },
-  {
-    name: "Preyanshi Doshi",
-    phone: "+91 78610 96669",
-    id: "contact-preyanshi",
+    role: "Public Relations & Outreach Department",
+    contacts: [
+      {
+        name: "Ambica Mehra",
+        phone: "+91 84220 74189",
+        id: "contact-ambica",
+      },
+      {
+        name: "Preyanshi Doshi",
+        phone: "+91 78610 96669",
+        id: "contact-preyanshi",
+      },
+    ],
   },
 ];
 
@@ -111,19 +122,14 @@ const locationInfo = {
 
 // Memoized contact item component
 const ContactItem = memo(
-  ({ contact }: { contact: (typeof contactInfo)[0] }) => (
-    <li>
-      <address className="text-base md:text-lg not-italic">
-        <span className="font-medium">{contact.name}</span>
-        <br />
-        <a
-          href={`tel:${contact.phone.replace(/\s+/g, "")}`}
-          className="text-slate-300 text-sm md:text-base block hover:text-blue-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-800 rounded"
-          aria-label={`Call ${contact.name} at ${contact.phone}`}
-        >
-          {contact.phone}
-        </a>
-      </address>
+  ({ contact }: { contact: { id: string; name: string; phone: string } }) => (
+    <li
+      id={contact.id}
+      className="flex flex-col gap-0.5 text-sm leading-relaxed"
+    >
+      <span className="font-medium text-sm md:text-base">{contact.name}</span>
+
+      <span className="text-sm">{contact.phone}</span>
     </li>
   ),
 );
@@ -200,9 +206,18 @@ const Footer = memo(() => {
           {/* Contact Us Section */}
           <section>
             <h4 className="font-bold text-lg mb-4">Contact Us</h4>
-            <ul className="space-y-4">
-              {contactInfo.map((contact) => (
-                <ContactItem key={contact.id} contact={contact} />
+            <ul className="space-y-6">
+              {contactInfo.map((group) => (
+                <li key={group.role} className="space-y-2">
+                  <p className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+                    {group.role}
+                  </p>
+                  <ul className="space-y-2">
+                    {group.contacts.map((contact) => (
+                      <ContactItem key={contact.id} contact={contact} />
+                    ))}
+                  </ul>
+                </li>
               ))}
             </ul>
           </section>
