@@ -84,7 +84,6 @@
   transform: translateY(2px); /* vertical alignment fix */
 }
 
-
 .submit-btn {
   width: 100%;
   background: linear-gradient(90deg, #3b82f6, #8b5cf6);
@@ -167,8 +166,8 @@
   vertical-align: middle;
 }
 .mes-banner {
-  background: linear-gradient(90deg, #FFD464, #FF5E5E, #E23C64, #B0183D);
-  color: #FCEDD8;
+  background: linear-gradient(90deg, #ffd464, #ff5e5e, #e23c64, #b0183d);
+  color: #fcedd8;
   text-align: center;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -182,9 +181,15 @@
 }
 
 @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .mes-highlight {
@@ -192,7 +197,6 @@
   color: #f7ec8d;
   text-shadow: 0px 0px 8px rgba(255, 244, 150, 0.6);
   font-family: "Raleway", sans-serif;
-
 }
 .mes-banner {
   max-width: 650px;
