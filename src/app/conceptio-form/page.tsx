@@ -8,7 +8,7 @@ const heroImg = "/conceptio-globe.png";
 const benefitsImg = "/images/benefits.png";
 
 const HeroBanner: React.FC = () => {
-  const target = new Date("2026-01-05T23:59:59");
+  const target = useMemo(() => new Date("2026-01-05T23:59:59"), []);
   const [timeLeft, setTimeLeft] = useState(() => {
     const diff = Math.max(0, target.getTime() - Date.now());
     const sec = Math.floor(diff / 1000) % 60;
@@ -29,12 +29,6 @@ const HeroBanner: React.FC = () => {
     }, 1000);
     return () => clearInterval(id);
   }, [target]);
-
-  const scrollToRegister = () => {
-    const el = document.getElementById("register");
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-    else window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   return (
     <header className="w-full relative">
@@ -441,9 +435,10 @@ const BenefitsSection: React.FC = () => (
 
     <div className="p-6 bg-slate-900/40 rounded-xl shadow-xl ring-1 ring-slate-800">
       <p className="text-slate-300 mb-6">
-        Conceptiō '26 opens the door to{" "}
-        <strong>MAHE's entrepreneurial ecosystem and beyond</strong>, providing
-        not just prizes, but pathways to real-world business development.
+        Conceptiō &apos;26 opens the door to{" "}
+        <strong>MAHE&apos;s entrepreneurial ecosystem and beyond</strong>,
+        providing not just prizes, but pathways to real-world business
+        development.
       </p>
 
       <div className="grid md:grid-cols-2 gap-6">
@@ -561,7 +556,9 @@ export default function ConceptioPage() {
                   <div
                     key={s.id}
                     className="p-6 bg-slate-900/40 rounded-lg shadow-xl ring-1 ring-slate-800"
-                    ref={(el) => (itemRefs.current[s.id - 1] = el)}
+                    ref={(el) => {
+                      itemRefs.current[s.id - 1] = el;
+                    }}
                   >
                     <h3 className="text-2xl font-semibold text-blue-300">
                       {s.title}
@@ -604,7 +601,9 @@ export default function ConceptioPage() {
                       return (
                         <div
                           key={round.id}
-                          ref={(el) => (itemRefs.current[round.id - 1] = el)}
+                          ref={(el) => {
+                            itemRefs.current[round.id - 1] = el;
+                          }}
                           className="animate-fade-in"
                         >
                           <StepDetailCard step={round} />
@@ -731,23 +730,8 @@ export default function ConceptioPage() {
               transform: translateY(0);
             }
           }
-          .animate-fadeIn {
-            animation: fadeIn 0.4s ease-out;
-          }
-          @media (max-width: 1024px) {
-            .lg\\:sticky {
-              position: static !important;
-            }
-          }
         `}</style>
       </div>
     </div>
   );
-}
-
-function scrollToStep(id: number) {
-  const el = document.querySelector(
-    `[data-step-id="${id}"]`,
-  ) as HTMLElement | null;
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
