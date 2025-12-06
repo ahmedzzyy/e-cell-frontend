@@ -71,7 +71,7 @@ const HeroBanner: React.FC = () => {
 
               <div className="flex items-center gap-4">
                 <a
-                  href="/register"
+                  href="/conceptio-form/register"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-slate-900/60 ring-1 ring-slate-700 hover:ring-blue-500 transition focus:outline-none text-white"
