@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -18,6 +19,8 @@ export default function ConceptioPage() {
   });
 
   const [message, setMessage] = useState("");
+  const [loading,setLoading]=useState(false);
+  const [angle,setangle]=useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   // Lighting Effect
@@ -32,7 +35,11 @@ export default function ConceptioPage() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const handleChange = (e: any) => {
+
+
+
+  // Generic input change handler
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
@@ -45,19 +52,8 @@ export default function ConceptioPage() {
     setForm((prev) => ({ ...prev, teamMembers: updated }));
   };
 
-  const ALLOWED_COLLEGES = [
-    "MIT Manipal",
-    "MAHE Manipal",
-    "KMC Manipal",
-    "MCODS Manipal",
-    "Manipal College of Nursing",
-    "Welcomgroup Graduate School of Hotel Administration",
-    "Manipal Academy of Banking",
-    "Manipal Institute of Technology Bengaluru",
-  ] as const;
-
   const addMember = () => {
-    if (form.teamMembers.length < 4) {
+    if (form.teamMembers.length < 3) {
       setForm((prev) => ({
         ...prev,
         teamMembers: [...prev.teamMembers, { name: "", yearOfStudy: "" }],
@@ -65,28 +61,34 @@ export default function ConceptioPage() {
     }
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // FIX #2 — Remove empty team members
+    if (!pitchDeckFile || !pitchVideoFile) {
+      setMessage("Both pitch deck and video need to be uploaded");
+      return;
+    }
+
     const cleanedMembers = form.teamMembers.filter(
       (m) => m.name.trim() !== "" && m.yearOfStudy !== ""
     );
 
+    const formData = new FormData();
+    formData.append("teamName", form.teamName);
+    formData.append("teamLeaderName", form.teamLeaderName);
+    formData.append("email", form.email);
+    formData.append("contactNumber", form.contactNumber);
+    formData.append("college", form.college);
+    formData.append("yearOfStudy", form.yearOfStudy);
+    formData.append("teamMembers", JSON.stringify(cleanedMembers));
+    formData.append("pitchDeckFile", pitchDeckFile);
+    formData.append("pitchVideoFile", pitchVideoFile);
+
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/submission`, {
+      setLoading(true);// to start the spinner 
+      const response = await fetch("https://e-cell-backend-v439.onrender.com/submission", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...form,
-          teamMembers: cleanedMembers,
-          supportingFiles: {
-            pitchDeckUrl: "https://example.com/pitchdeck.pdf",
-            pitchVideoUrl: "https://example.com/video.mp4",
-          },
-        }),
+        body: formData,
       });
 
       const data = await response.json();
@@ -102,10 +104,25 @@ export default function ConceptioPage() {
       console.error("Network error:", error);
       setMessage("❌ Failed to connect to the server");
     }
-
+  setLoading(false);
     setPitchDeckFile(null);
     setPitchVideoFile(null);
   };
+
+  // Spinner dot positions based on angle
+  const radius = 40;
+  const spinnerDots = [
+    { offset: 0 },
+    { offset: 90 },
+    { offset: 180 },
+    { offset: 270 },
+  ].map((dot) => {
+    const rad = ((angle + dot.offset) * Math.PI) / 180;
+    return {
+      x: radius * Math.cos(rad),
+      y: radius * Math.sin(rad),
+    };
+  });
 
   return (
     <main>
@@ -169,10 +186,10 @@ export default function ConceptioPage() {
             <br />
             Submit your startup idea to get mentorship, feedback & a chance to win prizes!
           </p>
-          <h2 className="text-2xl font-bold text-[#ffffff] mb-4">Team Information</h2>
+      
 
           <form onSubmit={handleSubmit} className="space-y-8">
-            {/*Basic Info */}
+            {/* Basic Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="form-label" style={{ color: "#9fb3ff" }}>Team Name *</label>
@@ -188,6 +205,7 @@ export default function ConceptioPage() {
               </div>
               <div>
                 <label className="form-label" style={{ color: "#9fb3ff" }}>Full Name (Team Leader) *</label>
+            
                 <input
                   type="text"
                   name="teamLeaderName"
@@ -213,6 +231,7 @@ export default function ConceptioPage() {
               <div>
                 <label className="form-label" style={{ color: "#9fb3ff" }}>Contact Number *</label>
                 {/* FIX #3 — Correct validation */}
+         
                 <input
                   type="tel"
                   name="contactNumber"
@@ -229,25 +248,21 @@ export default function ConceptioPage() {
               </div>
 
               <div>
-                <label className="form-label" style={{ color: "#9fb3ff" }}>College *</label>
-                <select
-                  name="college"
-                  value={form.college}
-                  onChange={handleChange}
-                  className="form-input glow-focus"
-                  required
-                >
-                  <option value="">Select College</option>
-                  {ALLOWED_COLLEGES.map((college) => (
-                    <option key={college} value={college}>
-                      {college}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <label className="form-label" style={{ color: "#9fb3ff" }}>College *<span className="text-[#9fb3ff] text-sm block mt-1">Use acronym format e.g., MIT Manipal, IIT Madras</span></label>
 
+              <input
+                type="text"
+                name="college"
+                value={form.college}
+                onChange={handleChange}
+                placeholder="MIT Manipal / IIT Madras"
+                className="form-input glow-focus"
+                required
+              />
+              </div>
               <div>
                 <label className="form-label" style={{ color: "#9fb3ff" }}>Year of Study (Leader) *</label>
+               
                 <select
                   name="yearOfStudy"
                   value={form.yearOfStudy}
@@ -275,6 +290,7 @@ export default function ConceptioPage() {
                   </span>
                 </div>
 
+        
                 {form.teamMembers.length < 3 && (
                   <button
                     type="button"
@@ -301,16 +317,18 @@ export default function ConceptioPage() {
                     </span>
 
                     <span>Add Team Member</span>
+                 
+                  
+
                   </button>
                 )}
               </div>
-
               <div className="space-y-3">
                 {form.teamMembers.map((member, i) => (
-                  <div key={i} className="relative grid grid-cols-1 md:grid-cols-2 gap-5 mb-3">
+                  <div key={i} className="relative grid grid-cols-1 md:grid-cols-2 gap-5">
                     <input
                       type="text"
-                      placeholder={`Member ${i + 2} Name (e.g. Jane Doe)`}
+                      placeholder={`Member ${i + 2} Name`}
                       value={member.name}
                       onChange={(e) => handleMemberChange(i, "name", e.target.value)}
                       className="form-input glow-focus"
@@ -346,6 +364,18 @@ export default function ConceptioPage() {
                         />
                       </button>
                     )}
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setForm((prev) => ({
+                          ...prev,
+                          teamMembers: prev.teamMembers.filter((_, idx) => idx !== i),
+                        }))
+                      }
+                      className="absolute right-[-2.75rem] top-1/2 -translate-y-1/2"
+                    >
+                      <img src="/trash.svg" alt="Delete" className="w-12 h-12" />
+                    </button>
                   </div>
                 ))}
               </div>
@@ -353,21 +383,12 @@ export default function ConceptioPage() {
 
             {/* File Upload */}
             <div>
-              <h2 className="text-2xl font-bold text-[#ffffff] mb-4 ">Submission Files</h2>
+              <h2 className="text-2xl font-bold text-[#ffffff] mb-4">Submission Files</h2>
               <div className="space-y-6">
                 <div>
                   <label className="form-label" style={{ color: "#9fb3ff" }}>Pitch Deck (PDF/PPT) *</label>
-
-                  <label
-                    className={`custom-upload mt-2 mb-2 cursor-pointer ${pitchDeckFile ? "selected" : ""}`}
-                    style={{
-                      backgroundColor: pitchDeckFile ? "#5b61ff" : "#25304d",
-                      border: pitchDeckFile ? "2px solid #8fa2ff" : "2px solid #2f3b5c",
-                      color: "#ffffff",
-                    }}
-
-                  >
-                    <img src="/upload.svg" alt="Upload" className="w-5 h-5 mr-2 invert" />
+                  <label className={`custom-upload cursor-pointer ${pitchDeckFile ? "selected" : ""}`}>
+                    <img src="/upload.svg" alt="Upload" className="w-5 h-5 mr-2" />
                     {pitchDeckFile ? "File Selected: " + pitchDeckFile.name : "Upload File"}
                     <input
                       type="file"
@@ -376,28 +397,18 @@ export default function ConceptioPage() {
                       onChange={(e) => setPitchDeckFile(e.target.files?.[0] || null)}
                     />
                   </label>
-
                   {pitchDeckFile && (
                     <p className="text-xs text-emerald-400 mt-1">✅ {pitchDeckFile.name} selected</p>
                   )}
-
                   <p className="text-xs text-[#ffffff]/70 mt-1">
                     File size limit: 100MB | Allowed types: PDF, PPT
                   </p>
                 </div>
 
                 <div>
-                  <label className="form-label" style={{ color: "#9fb3ff" }}>Pitch Deck Explainer Video *</label>
-
-                  <label
-                    className={`custom-upload mt-2 mb-2 cursor-pointer ${pitchVideoFile ? "selected" : ""}`}
-                    style={{
-                      backgroundColor: pitchDeckFile ? "#5b61ff" : "#25304d",
-                      border: pitchDeckFile ? "2px solid #8fa2ff" : "2px solid #2f3b5c",
-                      color: "#ffffff",
-                    }}
-                  >
-                    <img src="/upload.svg" alt="Upload" className="w-5 h-5 mr-2 invert " />
+                  <label className="form-label" style={{ color: "#9fb3ff" }}>Pitch Video *</label>
+                  <label className={`custom-upload cursor-pointer ${pitchVideoFile ? "selected" : ""}`}>
+                    <img src="/upload.svg" alt="Upload" className="w-5 h-5 mr-2" />
                     {pitchVideoFile ? "File Selected: " + pitchVideoFile.name : "Upload File"}
                     <input
                       type="file"
@@ -406,11 +417,9 @@ export default function ConceptioPage() {
                       onChange={(e) => setPitchVideoFile(e.target.files?.[0] || null)}
                     />
                   </label>
-
                   {pitchVideoFile && (
                     <p className="text-xs text-emerald-400 mt-1">✅ {pitchVideoFile.name} selected</p>
                   )}
-
                   <p className="text-xs text-[#ffffff]/70 mt-1">
                     File size limit: 100MB | Allowed types: Video
                   </p>
@@ -418,7 +427,7 @@ export default function ConceptioPage() {
               </div>
             </div>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <button
               type="submit"
               className="w-full py-3 mt-6 rounded-xl font-semibold text-lg text-white hover:scale-[1.03] transition"
@@ -426,9 +435,17 @@ export default function ConceptioPage() {
                 background: "linear-gradient(90deg,#2563eb,#4f46e5)",
                 boxShadow: "0 10px 30px rgba(79,70,229,0.12)",
               }}
+                 disabled={loading}
+            
             >
               Submit
             </button>
+   {/* Blue spinner */}
+      {loading && (
+        <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-50">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
 
             {message && <p className="text-center text-[#9fb3ff] mt-4 font-medium">{message}</p>}
           </form>
