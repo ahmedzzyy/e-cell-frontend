@@ -122,13 +122,13 @@
 
 /* Color Palette */
 :root {
-  --coral-cream: #FCEDD8;
-  --coral-yellow: #FFD464;
-  --coral-light: #FF5E5E;
-  --coral-pink:  #E23C64;
-  --coral-deep:  #B0183D;
-  --button-bg: linear-gradient(90deg, #FFB457, #FF6B6B);
-  --button-hover-bg: linear-gradient(90deg, #FFD464, #FF7E5F);
+  --coral-cream: #fcedd8;
+  --coral-yellow: #ffd464;
+  --coral-light: #ff5e5e;
+  --coral-pink: #e23c64;
+  --coral-deep: #b0183d;
+  --button-bg: linear-gradient(90deg, #ffb457, #ff6b6b);
+  --button-hover-bg: linear-gradient(90deg, #ffd464, #ff7e5f);
   --button-shadow: 0 0 25px rgba(255, 180, 87, 0.35);
 }
 
@@ -147,7 +147,7 @@
 .form-label {
   display: block;
   font-weight: 600;
-  color: #FFD464;
+  color: #ffd464;
   margin-bottom: 0.35rem;
 }
 
@@ -170,8 +170,9 @@
 .form-input:focus {
   background: rgba(255, 255, 255, 0.18);
   border-color: #9346ff;
-  box-shadow: 0 0 18px rgba(41, 248, 255, 0.35),
-              0 0 35px rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 0 18px rgba(41, 248, 255, 0.35),
+    0 0 35px rgba(255, 255, 255, 0.25);
 }
 
 /* Custom Select */
@@ -222,13 +223,15 @@ select.form-input option {
   color: #fff;
 }
 .trash-icon {
-  filter: brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(500%) hue-rotate(-10deg) brightness(110%);
+  filter: brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(500%)
+    hue-rotate(-10deg) brightness(110%);
   transition: all 0.25s ease;
   cursor: pointer;
 }
 
 .trash-icon:hover {
-  filter: brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(500%) hue-rotate(-10deg) brightness(110%);
+  filter: brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(500%)
+    hue-rotate(-10deg) brightness(110%);
   transform: scale(1.1);
 }
 
@@ -236,11 +239,13 @@ select.form-input option {
 .add-btn {
   color: #27c2ff;
   transform: scale(1);
-  transition: transform 0.25s ease, color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
 }
 
 .add-btn:hover {
-  color: #FF5E5E;
+  color: #ff5e5e;
   transform: scale(1.08);
 }
 .custom-upload.selected {
@@ -251,29 +256,57 @@ select.form-input option {
 .glow-focus:focus {
   outline: none;
   border-color: #6498ff;
-  box-shadow: 0 0 15px rgba(100, 190, 255, 0.4),
-              0 0 30px rgba(255, 94, 236, 0.3);
-  transition: box-shadow 0.25s ease, border 0.25s ease;
+  box-shadow:
+    0 0 15px rgba(100, 190, 255, 0.4),
+    0 0 30px rgba(255, 94, 236, 0.3);
+  transition:
+    box-shadow 0.25s ease,
+    border 0.25s ease;
 }
 
 /* Gradient Animations */
 @keyframes slowFloat {
-  0% { transform: translateY(0px) translateX(0px) scale(1); }
-  50% { transform: translateY(-40px) translateX(20px) scale(1.05); }
-  100% { transform: translateY(0px) translateX(0px) scale(1); }
+  0% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-40px) translateX(20px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
 }
 
 @keyframes slowFloatReverse {
-  0% { transform: translateY(0px) translateX(0px) scale(1); }
-  50% { transform: translateY(40px) translateX(-20px) scale(1.05); }
-  100% { transform: translateY(0px) translateX(0px) scale(1); }
+  0% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  50% {
+    transform: translateY(40px) translateX(-20px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
 }
 
 @keyframes slowPulse {
-  0%, 100% { opacity: 0.25; transform: scale(1); }
-  50% { opacity: 0.45; transform: scale(1.05); }
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.05);
+  }
 }
 
-.animate-slowFloat { animation: slowFloat 18s ease-in-out infinite; }
-.animate-slowFloatReverse { animation: slowFloatReverse 22s ease-in-out infinite; }
-.animate-slowPulse { animation: slowPulse 20s ease-in-out infinite; }
+.animate-slowFloat {
+  animation: slowFloat 18s ease-in-out infinite;
+}
+.animate-slowFloatReverse {
+  animation: slowFloatReverse 22s ease-in-out infinite;
+}
+.animate-slowPulse {
+  animation: slowPulse 20s ease-in-out infinite;
+}
