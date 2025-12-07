@@ -533,6 +533,10 @@ export default function ConceptioPage() {
                 {message}
               </p>
             )}
+            <p className="text-center text-m text-[#eeeeee] ">
+  For queries, contact <span className="font-semibold text-[#eeeeee]">Sanchit Sood</span> : +91 98720 93930
+</p>
+
           </form>
         </div>
       </div>
