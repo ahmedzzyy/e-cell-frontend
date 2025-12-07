@@ -116,8 +116,7 @@ const locationInfo = {
   building: "Innovation Centre",
   street: "MIT Rd, Eshwar Nagar",
   city: "Manipal, Karnataka 576104",
-  mapsUrl:
-    "https://www.google.com/maps/search/e+cell+mit+manipal/@13.3515236,74.7904158,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D",
+  mapsUrl: "https://maps.app.goo.gl/ePA1xbqkUzsHUaQU8",
 };
 
 // Memoized contact item component
@@ -138,7 +137,7 @@ ContactItem.displayName = "ContactItem";
 
 // Memoized social link component
 const SocialLink = memo(({ link }: { link: (typeof socialLinks)[0] }) => (
-  <a
+  <Link
     href={link.href}
     target="_blank"
     rel="noopener noreferrer"
@@ -147,7 +146,7 @@ const SocialLink = memo(({ link }: { link: (typeof socialLinks)[0] }) => (
   >
     <link.icon />
     <span className="sr-only">{link.platform}</span>
-  </a>
+  </Link>
 ));
 
 SocialLink.displayName = "SocialLink";
@@ -226,7 +225,7 @@ const Footer = memo(() => {
           <section>
             <h4 className="font-bold text-lg mb-4">Location</h4>
             <div className="mb-4">
-              <a
+              <Link
                 href={locationInfo.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -234,7 +233,7 @@ const Footer = memo(() => {
                 aria-label="View E-Cell MIT Manipal location on Google Maps"
               >
                 View on Google Maps
-              </a>
+              </Link>
             </div>
             <address className="text-slate-300 not-italic">
               <p className="font-medium">{locationInfo.name}</p>
