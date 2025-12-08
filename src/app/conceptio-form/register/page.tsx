@@ -1,13 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export default function ConceptioPage() {
   const [pitchDeckFile, setPitchDeckFile] = useState<File | null>(null);
   const [pitchVideoFile, setPitchVideoFile] = useState<File | null>(null);
-
+const Confetti = dynamic(() => import("react-confetti"), { ssr: false });
   const [form, setForm] = useState({
     teamName: "",
     teamLeaderName: "",
@@ -20,6 +23,7 @@ export default function ConceptioPage() {
 
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showSuccess,setshowSuccess]=useState(false);
   const [angle, setangle] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -89,18 +93,25 @@ export default function ConceptioPage() {
 
     try {
       setLoading(true); // to start the spinner
-      const response = await fetch(
-        "https://e-cell-backend-v439.onrender.com/submission",
-        {
-          method: "POST",
-          body: formData,
-        },
-      );
+      const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 120000);
+
+  const response = await fetch(
+    "https://e-cell-backend-v439.onrender.com/submission",
+    {
+      method: "POST",
+      body: formData,
+      signal: controller.signal,
+    }
+  );
+
+  clearTimeout(timeoutId);
 
       const data = await response.json();
 
       if (response.ok) {
         setMessage("✅ Submission successful!");
+     setshowSuccess(true);
         console.log("Server response:", data);
       } else {
         setMessage(`❌ Error: ${data.message || "Something went wrong"}`);
@@ -129,10 +140,19 @@ export default function ConceptioPage() {
       y: radius * Math.sin(rad),
     };
   });
+useEffect(() => {
+  if (showSuccess) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+}, [showSuccess]);
+
 
   return (
     <main>
       <Navbar />
+      {showSuccess && <Confetti></Confetti>}
       <div
         className="min-h-screen flex items-center justify-center overflow-hidden py-20 px-4 fixed inset-0 -z-10"
         style={{
@@ -527,6 +547,36 @@ export default function ConceptioPage() {
                 <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
               </div>
             )}
+
+            {showSuccess && (
+  <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+    <div className="bg-[#060a1c] border border-indigo-500/30 rounded-2xl p-8 w-[90%] max-w-md text-center shadow-2xl animate-scaleIn">
+
+      <h2 className="text-3xl font-bold text-emerald-400 mb-4">
+        ✅ Submission Successful!
+      </h2>
+
+      <p className="text-[#dddddd] text-sm leading-relaxed mb-6">
+        Thank you for participating in{" "}
+        <span className="text-[#9fb3ff] font-semibold">
+          Conceptiō–26
+        </span>
+        . Your idea has been received successfully.
+      </p>
+
+      <button
+        onClick={() => {
+          setshowSuccess(false);
+          setPitchDeckFile(null);
+          setPitchVideoFile(null);
+        }}
+        className="px-6 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 transition text-white font-semibold"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
 
             {message && (
               <p className="text-center text-[#9fb3ff] mt-4 font-medium">
