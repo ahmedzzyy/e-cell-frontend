@@ -2,7 +2,6 @@ import { APIResponse } from "@/services/types";
 import { BASE_URL } from "@/services/config";
 import { type RegisterFormValues } from "@/lib/definitions/register-user-schema";
 import { type LoginFormValues } from "@/lib/definitions/login-user-schema";
-import { refresh } from "next/cache";
 
 export const registerUser = async (
   registerData: RegisterFormValues,
@@ -61,7 +60,6 @@ export const refreshUser = async (): Promise<APIResponse | undefined> => {
 export const logoutUser = async (): Promise<APIResponse | undefined> => {
   const response = await fetch(`${BASE_URL}/auth/logout`, {
     method: "POST",
-    body: JSON.stringify({}),
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

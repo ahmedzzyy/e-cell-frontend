@@ -19,6 +19,7 @@ import {
 import { Card } from "@/components/ui/card";
 import { type User } from "@/constants/user";
 import EditProfileDialog from "@/components/edit-profile-dialog";
+import LogoutButton from "@/components/logout-button";
 
 interface DashboardContentProps {
   user: User;
@@ -183,9 +184,7 @@ export default function DashboardContent({ user }: DashboardContentProps) {
                     Edit profile
                   </button>
                 </EditProfileDialog>
-                <button className="w-full rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-secondary-foreground transition hover:brightness-110">
-                  Change password
-                </button>
+                <LogoutButton />
               </div>
             </Card>
           </div>
