@@ -208,7 +208,7 @@ const Footer = memo(() => {
             <ul className="space-y-6">
               {contactInfo.map((group) => (
                 <li key={group.role} className="space-y-2">
-                  <p className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+                  <p className="text-xs font-semibold tracking-wide text-gray-400 uppercase">
                     {group.role}
                   </p>
                   <ul className="space-y-2">
