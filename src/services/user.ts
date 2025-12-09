@@ -2,7 +2,12 @@ import { type APIResponse } from "@/services/types";
 import { BASE_URL } from "@/services/config";
 
 export const getCurrentUser = async (): Promise<APIResponse | undefined> => {
-  const response = await fetch(`${BASE_URL}/user/profile`);
+  const response = await fetch(`${BASE_URL}/user/profile`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
 
   const data = (await response.json()) as APIResponse;
 

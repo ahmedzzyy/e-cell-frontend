@@ -1,6 +1,8 @@
 import { APIResponse } from "@/services/types";
 import { BASE_URL } from "@/services/config";
-import { RegisterFormValues } from "@/lib/definitions/register-user-schema";
+import { type RegisterFormValues } from "@/lib/definitions/register-user-schema";
+import { type LoginFormValues } from "@/lib/definitions/login-user-schema";
+import { refresh } from "next/cache";
 
 export const registerUser = async (
   registerData: RegisterFormValues,
@@ -21,10 +23,12 @@ export const registerUser = async (
   return data;
 };
 
-export const loginUser = async (): Promise<APIResponse | undefined> => {
+export const loginUser = async (
+  loginData: LoginFormValues,
+): Promise<APIResponse | undefined> => {
   const response = await fetch(`${BASE_URL}/auth/login`, {
     method: "POST",
-    body: JSON.stringify({}),
+    body: JSON.stringify(loginData),
     headers: {
       "Content-Type": "application/json",
     },
@@ -39,7 +43,9 @@ export const loginUser = async (): Promise<APIResponse | undefined> => {
 export const refreshUser = async (): Promise<APIResponse | undefined> => {
   const response = await fetch(`${BASE_URL}/auth/refresh`, {
     method: "POST",
-    body: JSON.stringify({}),
+    body: JSON.stringify({
+      refreshToken: localStorage.getItem("refreshToken"),
+    }),
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

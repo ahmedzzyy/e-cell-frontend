@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
 import "./globals.css";
+import { UserProvider } from "@/components/user-provider";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
@@ -22,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${robotoSans.variable} antialiased`}>{children}</body>
+      <UserProvider>
+        <body className={`${robotoSans.variable} antialiased`}>{children}</body>
+      </UserProvider>
     </html>
   );
 }
