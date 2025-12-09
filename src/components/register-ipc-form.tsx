@@ -185,16 +185,70 @@ export function RegisterIPCForm({
       </Card>
 
       <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
-        <DialogContent>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>Registration received</DialogTitle>
-            <DialogDescription>
-              You&apos;re registered for IPC. We&apos;ll email submission
-              timelines shortly. Please watch your inbox.
+            <DialogTitle>Registration Confirmed!</DialogTitle>
+            <DialogDescription className="space-y-4 text-left pt-4">
+              <p>
+                Your registration for the{" "}
+                <strong>Innovation Policy Consortium 2026 (IPC 2026)</strong>{" "}
+                has been successfully confirmed. Welcome aboard!
+              </p>
+
+              <div className="bg-muted p-4 rounded-lg border-l-4 border-primary space-y-2">
+                <h4 className="font-semibold text-foreground text-sm">
+                  📋 Phase I: Case Study Submission
+                </h4>
+                <p className="text-sm">
+                  Your team is required to conduct a{" "}
+                  <strong>case study based on real challenges</strong> within
+                  the student startup ecosystem. You must:
+                </p>
+                <ul className="text-sm space-y-1 ml-4 list-disc">
+                  <li>
+                    Conduct an <strong>actual survey</strong> with startups in
+                    your ecosystem
+                  </li>
+                  <li>Identify practical challenges they currently face</li>
+                  <li>Develop innovative, actionable solutions</li>
+                  <li>Follow the official format strictly</li>
+                </ul>
+              </div>
+
+              <div className="text-center my-6">
+                <a
+                  href="/Innovation_Policy_Consortium_2026_Case_Study_Format.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                >
+                  Download Case Study Format
+                </a>
+              </div>
+
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm space-y-1">
+                <p className="text-yellow-900">
+                  <strong>Submission Deadline:</strong> December 23, 2025
+                </p>
+                <p className="text-yellow-900">
+                  <strong>Contact:</strong> For queries, reach out at{" "}
+                  <a
+                    href="mailto:ecell.mit@manipal.edu"
+                    className="text-primary underline"
+                  >
+                    ecell.mit@manipal.edu
+                  </a>
+                </p>
+              </div>
+
+              <p className="text-sm">
+                Detailed guidelines have also been sent to your email. Please
+                check your inbox.
+              </p>
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button onClick={() => setShowSuccessDialog(false)}>Okay</Button>
+            <Button onClick={() => setShowSuccessDialog(false)}>Got it</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
