@@ -24,7 +24,8 @@ export function UserProvider({ children }: UserProviderProps) {
     const fetchCurrentUser = async () => {
       try {
         const response = await getCurrentUser();
-        setUser((response?.payload as User) || null);
+        const payload = response?.payload as { user: User };
+        setUser(payload.user || null);
       } catch {
         try {
           const tokenResponse = await refreshUser();
