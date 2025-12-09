@@ -1,3 +1,5 @@
+"use client";
+
 import { type User } from "@/constants/user";
 import { createContext } from "react";
 
