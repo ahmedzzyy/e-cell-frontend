@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+import { cn } from "@/lib/utils";
+
 // Navigation items with proper typing
 const navItems = [
   { name: "Home", href: "/" },
@@ -15,7 +17,10 @@ const navItems = [
   { name: "CONCEPTIO ’26", href: "/conceptio-form" },
 ] as const;
 
-export default function Navbar() {
+export default function Navbar({
+  className,
+  ...props
+}: React.ComponentProps<"nav">) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -50,7 +55,13 @@ export default function Navbar() {
   return (
     <>
       {/* Main Navbar */}
-      <nav className="w-full bg-slate-900 shadow-lg z-50 sticky top-0">
+      <nav
+        className={cn(
+          "w-full bg-slate-900 shadow-lg z-50 sticky top-0",
+          className,
+        )}
+        {...props}
+      >
         <div className="flex items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
           {/* Logo */}
           <div className="flex-shrink-0">
