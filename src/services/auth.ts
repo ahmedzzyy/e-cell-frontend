@@ -1,10 +1,13 @@
 import { APIResponse } from "@/services/types";
 import { BASE_URL } from "@/services/config";
+import { RegisterFormValues } from "@/lib/definitions/register-user-schema";
 
-export const registerUser = async (): Promise<APIResponse | undefined> => {
+export const registerUser = async (
+  registerData: RegisterFormValues,
+): Promise<APIResponse | undefined> => {
   const response = await fetch(`${BASE_URL}/auth/register`, {
     method: "POST",
-    body: JSON.stringify({}),
+    body: JSON.stringify(registerData),
     headers: {
       "Content-Type": "application/json",
     },
