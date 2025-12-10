@@ -5,7 +5,7 @@ import { APIResponse } from "@/services/types";
 export const registerForIPC = async (
   ipcData: RegisterIPCFormValues,
 ): Promise<APIResponse | undefined> => {
-  const response = await fetch(`${BASE_URL}/ipc/register`, {
+  const response = await fetch('https://e-cell-backend-v439.onrender.com/ipc/register', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
