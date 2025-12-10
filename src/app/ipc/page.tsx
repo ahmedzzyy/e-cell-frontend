@@ -38,7 +38,7 @@ export default function InnovationPolicyConsortiumPage() {
 
                 <p className="mt-3 text-slate-300 text-lg leading-relaxed border-b border-slate-700 pb-4">
                   The Innovation Policy Consortium (IPC) is a national innovation initiative  by the
-                  Entrepreneurship Cell, MIT Manipal[cite: 4]. This consortium aims to bring together E-Cells and student policy teams from premier colleges across the country to collaboratively address pressing challenges within India’s business and startup ecosystem.
+                  Entrepreneurship Cell, MIT Manipal This consortium aims to bring together E-Cells and student policy teams from premier colleges across the country to collaboratively address pressing challenges within India’s business and startup ecosystem.
                 </p>
 
                 <div className="mt-6 grid sm:grid-cols-3 gap-4 text-center">
@@ -53,7 +53,7 @@ export default function InnovationPolicyConsortiumPage() {
                   <div className="p-4 bg-slate-800/80 rounded-lg border border-slate-700 shadow-lg">
                     <div className="text-sm text-slate-400">Eligibility</div>
                     <div className="text-xl font-bold">
-                      E-Cells & Policy Teams 
+                    E-cells
                     </div>
                   </div>
 
@@ -75,8 +75,8 @@ export default function InnovationPolicyConsortiumPage() {
                 <ul className="list-disc ml-5 space-y-2 text-slate-300 p-6 bg-slate-900/40 rounded-xl shadow-xl ring-1 ring-slate-800">
                   <li>To create a platform for inter-E-Cell collaboration and policy-level dialogue</li>
                   <li>To identify and address real-world challenges faced by student-led startups.</li>
-                 <li>To enable E-Cells to contribute meaningfully to the national startup ecosystem through informed policymaking[cite: 10].</li>
-                  <li>To present a unified, well-researched “Bharat Yuva Innovation Policy Recommendation 2026” to government representatives at MES 2026[cite: 11].</li>
+                 <li>To enable E-Cells to contribute meaningfully to the national startup ecosystem through informed policymaking</li>
+                  <li>To present a unified, well-researched “Bharat Yuva Innovation Policy Recommendation 2026” to government representatives at MES 2026</li>
                 </ul>
               </section>
 

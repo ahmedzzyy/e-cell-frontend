@@ -2,6 +2,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+
 import { useCountdown } from "@/hooks/use-countdown";
 import { REGISTRATION_CLOSES_DATE } from "@/data/ipc-config";
 
@@ -27,13 +28,13 @@ export const HeroBanner: React.FC = () => {
   return (
     <header className="w-full relative">
       <div className="relative w-full h-[900px]">
-       {/* <Image
-          src={heroImg}
+       <Image
+          src="/image.png"
           alt="Starry background with landscape"
           fill
           className="object-cover"
           priority
-        /> */}
+        /> 
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/70" />
       </div>
 

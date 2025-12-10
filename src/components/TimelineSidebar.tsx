@@ -119,7 +119,7 @@ export const TimelineSidebar: React.FC = () => (
        Ambica Mehra: <span className="text-blue-400 hover:text-blue-300 cursor-pointer">+91 8422074189 </span>
         </span>
         <span className="block font-medium">
-          Priyanshi Doshi: <span className="text-blue-400 hover:text-blue-300 cursor-pointer">+91 9082992145‬</span>
+          Preyanshi Doshi: <span className="text-blue-400 hover:text-blue-300 cursor-pointer">+91 7861096669</span>
         </span>
       
     
