@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react";
 // Assuming you have these components:
 import Navbar from "@/components/Navbar";
- import Footer from "@/components/Footer";
+import Footer from "@/components/Footer";
 
 // Import custom components and data
 import { HeroBanner } from "@/components/HeroBanner";
@@ -14,16 +14,16 @@ import { STEPS } from "@/data/ipc-config";
 
 
 export default function InnovationPolicyConsortiumPage() {
-  
-  
+
+
   // Set the initial active tab to the first 'round' step (Case Study Submission)
   const [activeRoundId, setActiveRoundId] = useState<number>(
-    STEPS[0]?.id || 2 
+    STEPS[0]?.id || 2
   );
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
-       <Navbar /> 
+      <Navbar />
       <HeroBanner />
 
       <div className="pt-12 md:pt-20">
@@ -33,7 +33,7 @@ export default function InnovationPolicyConsortiumPage() {
               {/* Event Summary and Key Stats */}
               <div className="mb-10 p-6 rounded-2xl bg-slate-900/50 ring-1 ring-slate-800 shadow-xl">
                 <h1 className="text-4xl font-extrabold text-white">
-                 Innovation Policy Consortium (IPC) 
+                  Innovation Policy Consortium (IPC)
                 </h1>
 
                 <p className="mt-3 text-slate-300 text-lg leading-relaxed border-b border-slate-700 pb-4">
@@ -45,22 +45,22 @@ export default function InnovationPolicyConsortiumPage() {
                   <div className="p-4 bg-slate-800/80 rounded-lg border border-slate-700 shadow-lg">
                     <div className="text-sm text-slate-400">Main Goal</div>
                     <div className="text-xl font-bold text-blue-400">
-                      
-                      Policy Recommendation Document 
+
+                      Policy Recommendation Document
                     </div>
                   </div>
 
                   <div className="p-4 bg-slate-800/80 rounded-lg border border-slate-700 shadow-lg">
                     <div className="text-sm text-slate-400">Eligibility</div>
                     <div className="text-xl font-bold">
-                    E-cells
+                      Open only to college E-Cells and entrepreneurship-driven student organizations.
                     </div>
                   </div>
 
                   <div className="p-4 bg-slate-800/80 rounded-lg border border-slate-700 shadow-lg">
                     <div className="text-sm text-slate-400">Final Venue</div>
                     <div className="text-xl font-bold">
-                     MIT Manipal 
+                      MIT Manipal
                     </div>
                   </div>
                 </div>
@@ -69,13 +69,13 @@ export default function InnovationPolicyConsortiumPage() {
               {/* Objectives Section */}
               <section className="mt-8 space-y-6">
                 <h2 className="text-3xl font-bold text-white mb-6 border-b border-blue-600 pb-2">
-                  Objectives of IPC 
+                  Objectives of IPC
                 </h2>
 
                 <ul className="list-disc ml-5 space-y-2 text-slate-300 p-6 bg-slate-900/40 rounded-xl shadow-xl ring-1 ring-slate-800">
                   <li>To create a platform for inter-E-Cell collaboration and policy-level dialogue</li>
                   <li>To identify and address real-world challenges faced by student-led startups.</li>
-                 <li>To enable E-Cells to contribute meaningfully to the national startup ecosystem through informed policymaking</li>
+                  <li>To enable E-Cells to contribute meaningfully to the national startup ecosystem through informed policymaking</li>
                   <li>To present a unified, well-researched “Bharat Yuva Innovation Policy Recommendation 2026” to government representatives at MES 2026</li>
                 </ul>
               </section>
@@ -94,11 +94,10 @@ export default function InnovationPolicyConsortiumPage() {
                     <button
                       key={round.id}
                       onClick={() => setActiveRoundId(round.id)}
-                      className={`px-6 py-2 rounded-lg text-lg font-medium transition-all duration-300 ${
-                        activeRoundId === round.id
+                      className={`px-6 py-2 rounded-lg text-lg font-medium transition-all duration-300 ${activeRoundId === round.id
                           ? "bg-blue-600 text-white shadow-md shadow-blue-500/50"
                           : "bg-transparent text-slate-300 hover:bg-slate-700"
-                      }`}
+                        }`}
                     >
                       {round.title.split(":")[0].trim()}
                     </button>
@@ -118,9 +117,9 @@ export default function InnovationPolicyConsortiumPage() {
                     return null;
                   })}
                 </div>
-                
+
                 <p className="text-sm text-slate-400 mt-6 pt-4 border-t border-slate-700/50">
-                    The IPC will be conducted in multiple stages, combining research, review, discussion, and final policy presentation .
+                  The IPC will be conducted in multiple stages, combining research, review, discussion, and final policy presentation .
                 </p>
               </section>
             </div>
@@ -148,7 +147,7 @@ export default function InnovationPolicyConsortiumPage() {
           }
         `}</style>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

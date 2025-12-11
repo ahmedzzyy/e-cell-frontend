@@ -68,7 +68,7 @@ export const STEPS: Step[] = [
     title: "Phase 1: Registration Phase",
     short: "Registration and team formation.",
     details: [
-      "Eligibility criteria: E-Cells and student policy teams from colleges across India.",
+      "Eligibility criteria:Open only to college E-Cells and entrepreneurship-driven student organizations.",
       "Mode of Registration: Through the official E-Cell MIT Manipal website.",
     ],
     deliverables: ["Official team registration via portal "],

@@ -11,8 +11,8 @@ export const BenefitsSection: React.FC = () => (
     <div className="p-6 bg-slate-900/40 rounded-xl shadow-xl ring-1 ring-slate-800">
       <p className="text-slate-300 mb-6">
         The Innovation Policy Consortium is focused on producing{" "}
-        [cite_start]<strong>tangible policy documents</strong> [cite: 34] and fostering a national
-        [cite_start]network of student policy teams[cite: 34].
+        <strong>tangible policy documents</strong>and fostering a national
+network of student policy teams.
       </p>
 
       <div className="grid md:grid-cols-2 gap-6">
