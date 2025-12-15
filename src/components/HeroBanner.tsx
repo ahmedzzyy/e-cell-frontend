@@ -27,6 +27,7 @@ export const HeroBanner: React.FC = () => {
 
   return (
     <header className="w-full relative">
+   
       <div className="relative w-full h-[900px]">
        <Image
           src="/image.png"
@@ -37,12 +38,19 @@ export const HeroBanner: React.FC = () => {
         /> 
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/70" />
       </div>
+ 
 
       <div className="absolute inset-0 pointer-events-none flex items-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 pointer-events-auto">
           <div className="grid lg:grid-cols-12 items-center gap-8">
             <div className="lg:col-span-7">
               {/* Event Header */}
+               <div className="inline-flex items-center gap-2 mb-3">
+  <span className="text-xs font-semibold px-3 py-1 rounded-full 
+                   bg-emerald-500/15 text-emerald-400 ring-1 ring-emerald-400/30">
+    🚀 Registration Extended
+  </span>
+</div>
               <div className="inline-flex items-center gap-3 mb-3">
                 <span className="text-xs bg-slate-800/60 px-3 py-1 rounded-full text-slate-300">
                   E-Cell MIT

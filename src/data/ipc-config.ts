@@ -3,7 +3,7 @@
 import React from "react";
 import { JSX } from "react";
 
-export const REGISTRATION_CLOSES_DATE = "2025-12-15T23:59:59";
+export const REGISTRATION_CLOSES_DATE = "2025-12-17T23:59:59";
 
 // --- Types ---
 export type Benefit = {
@@ -62,7 +62,7 @@ export const IPC_BENEFITS: Benefit[] = [
 export const STEPS: Step[] = [
   {
     id: 1,
-    date: "9th Dec — 15th Dec, 2025",
+    date: "9th Dec — 17th Dec, 2025",
     start: "2025-12-09T00:00:00",
     end: REGISTRATION_CLOSES_DATE,
     title: "Phase 1: Registration Phase",
@@ -78,7 +78,7 @@ export const STEPS: Step[] = [
   {
     id: 2,
     date: "Deadline: 23rd Dec, 2025",
-    start: "2025-12-16T00:00:00",
+    start: "2025-12-18T00:00:00",
     end: "2025-12-23T23:59:59",
     title: "Phase 2: Case Study Submission",
     short: "Submission of Case Study for Policy.",
