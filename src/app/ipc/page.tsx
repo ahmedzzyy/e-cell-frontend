@@ -18,7 +18,7 @@ export default function InnovationPolicyConsortiumPage() {
 
   // Set the initial active tab to the first 'round' step (Case Study Submission)
   const [activeRoundId, setActiveRoundId] = useState<number>(
-    STEPS[0]?.id || 2
+    STEPS[1]?.id || 2
   );
 
   return (
